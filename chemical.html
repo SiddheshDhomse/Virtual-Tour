@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS</title>
+    <link href="departments.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+</head>
+<body>
+     <div id="header"></div>
+     <script>
+         fetch('header.html')
+             .then(response => response.text())
+             .then(data => document.getElementById('header').innerHTML = data);
+     </script>
+
+     <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+
+        <img src="Images/VitHero.jpg" alt="" data-aos="fade-in">
+  
+        <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <h2>Department of Chemical Engineering/h2>
+              <a href="tour.html" class="btn-get-started">Take Virtual Tour</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /Hero Section -->
+
+      <div class="content-wrapper">
+        <p class="text-muted">
+            The Chemical Engineering Department at Vishwakarma Institute of Technology is dedicated to advancing the field of chemical engineering through rigorous academic programs and research initiatives. The department focuses on the application of chemical principles to solve real-world problems in areas such as energy, materials, and pharmaceuticals. With state-of-the-art laboratories and experienced faculty, students are equipped with the knowledge and skills necessary to excel in the chemical engineering industry.        </p>
+        <img src="https://www.vit.edu/Computer/images/System_Lab_Comp.jpg" alt="Computer Engineering Department">
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
+</html>

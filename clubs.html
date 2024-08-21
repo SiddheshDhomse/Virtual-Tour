@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clubs</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9fafb;
+            color: #333;
+        }
+
+        .clubs-section {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .clubs-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2596be;
+            margin-bottom: 2rem;
+        }
+
+        .clubs-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .club-box {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            width: 200px; /* Adjust as needed */
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit; /* Ensures the text color is inherited */
+        }
+
+        .club-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .club-box img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        .club-box h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #2596be;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div id="header"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+    </script>
+
+    <!-- Clubs Section -->
+    <section class="clubs-section">
+        <h2>Our Clubs</h2>
+        <div class="clubs-container">
+            <!-- Repeat this block for each club -->
+            <a href="club1.html" class="club-box">
+                <img src="Images/EDClogoblack.png" alt="Club Name 1">
+                <h3>Entrepreneurship Development Club</h3>
+            </a>
+            <a href="club2.html" class="club-box">
+                <img src="path/to/club-logo2.png" alt="Club Name 2">
+                <h3>Club Name 2</h3>
+            </a>
+            <a href="club2.html" class="club-box">
+                <img src="path/to/club-logo2.png" alt="Club Name 2">
+                <h3>Club Name 2</h3>
+            </a>
+            <a href="club2.html" class="club-box">
+                <img src="path/to/club-logo2.png" alt="Club Name 2">
+                <h3>Club Name 2</h3>
+            </a>
+            <a href="club2.html" class="club-box">
+                <img src="path/to/club-logo2.png" alt="Club Name 2">
+                <h3>Club Name 2</h3>
+            </a>
+            <a href="club2.html" class="club-box">
+                <img src="path/to/club-logo2.png" alt="Club Name 2">
+                <h3>Club Name 2</h3>
+            </a>
+            <!-- Add more club-boxes as needed -->
+        </div>
+    </section>
+
+</body>
+</html>

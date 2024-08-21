@@ -1,0 +1,42 @@
+#container {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 50px;
+}
+
+#image-frame {
+    margin-left: 5%;
+    width: 60%;
+    height: 500px;
+}
+
+#info-container {
+    margin-top: 30px;
+    margin-left: 30px;
+    width: 30%;
+    height: 450px;
+    border-radius: 25px;
+    background-color: #e0d9d9;
+}
+
+#button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#next-image-btn, #previous-image-btn {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 0 20px; 
+    margin-top: 10px;
+}
+
+#next-image-btn:hover, #previous-image-btn:hover {
+    background-color: #0056b3;
+}

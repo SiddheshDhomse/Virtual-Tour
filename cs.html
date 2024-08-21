@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS</title>
+    <link href="departments.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body>
+    <div id="header"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+    </script>
+
+    <!-- Swiper Slider Section -->
+    <div class="container-fluid">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="Images/VitHero.jpg" class="w-100 d-block" alt="Vit Hero">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://swiperjs.com/demos/images/nature-2.jpg" alt="Campus Image 2">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://swiperjs.com/demos/images/nature-3.jpg" alt="Campus Image 3">
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+            
+            <!-- Overlay -->
+            <div class="overlay">
+                <div class="container text-center">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <h2>Department of Computer Engineering</h2>
+                            <a href="tour.html" class="btn-get-started">Take Virtual Tour</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-wrapper">
+        <p class="text-muted">
+            The Computer Engineering Department at Vishwakarma Institute of Technology is known for its strong emphasis on both theoretical foundations and practical applications in computing. The department regularly updates its curriculum to include emerging technologies such as Artificial Intelligence, Cybersecurity, and Data Science. With state-of-the-art laboratories and industry collaborations, the department provides students with hands-on experience and opportunities to work on cutting-edge projects.
+        </p>
+        <img src="https://www.vit.edu/Computer/images/System_Lab_Comp.jpg" alt="Computer Engineering Department">
+    </div>
+
+    <!-- Team Section -->
+    <section class="team section" id="team">
+        <div class="container text-center">
+            <h2 style="margin-bottom: 40px;">Related Clubs</h2>
+
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="team-member">
+                        <figure>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzqIiPGhk_-JwUHB7ZfbnaFKNu_ElmbuKkpg&s" alt="Joshua Stefan" class="img-fluid">
+                        </figure>
+                        <div class="team-member-info">
+                            <h3>Vclick</h3>
+                            <span class="position">Web Development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="team-member">
+                        <figure>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzqIiPGhk_-JwUHB7ZfbnaFKNu_ElmbuKkpg&s" alt="Sheena Anderson" class="img-fluid">
+                        </figure>
+                        <div class="team-member-info">
+                            <h3>Sheena Anderson</h3>
+                            <span class="position">Marketing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="team-member">
+                        <figure>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzqIiPGhk_-JwUHB7ZfbnaFKNu_ElmbuKkpg&s" alt="Evan Smith" class="img-fluid">
+                        </figure>
+                        <div class="team-member-info">
+                            <h3>Evan Smith</h3>
+                            <span class="position">Content</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="team-member">
+                        <figure>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzqIiPGhk_-JwUHB7ZfbnaFKNu_ElmbuKkpg&s" alt="Kaylie Jones" class="img-fluid">
+                        </figure>
+                        <div class="team-member-info">
+                            <h3>Kaylie Jones</h3>
+                            <span class="position">Accountant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="departments.js"></script>
+</body>
+</html>
+
+
+

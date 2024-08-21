@@ -1,0 +1,163 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+/* Swiper container for the slider */
+.swiper {
+    height: 70vh;
+    width: 100%;
+    position: relative; /* Ensure the overlay is positioned relative to the swiper */
+}
+
+.swiper-slide img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+/* Overlay for the slider */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 10; /* Ensure the overlay is above the slides */
+}
+
+.overlay h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.overlay .btn-get-started {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.overlay .btn-get-started:hover {
+    background-color: #0056b3;
+}
+
+/* Content Section */
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px;
+    margin-top: 20px;
+}
+
+.text-muted {
+    max-width: 55%;
+    font-size: 16px;
+    color: #6c757d;
+    margin-left: 10px;
+}
+
+.content-wrapper img {
+    max-width: 40%; 
+    height: auto; 
+    margin-left: 15px;
+    margin-right: 50px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Team Section */
+.team .team-member {
+    text-align: center;
+    position: relative;
+    margin-bottom: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team .team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.team .team-member figure {
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.team .team-member img {
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: auto;
+}
+
+.team .team-member:hover img {
+    transform: scale(1.1);
+}
+
+.team .team-member-info {
+    padding: 20px 0;
+}
+
+.team .team-member-info h3 {
+    margin-top: 15px; /* Increase the gap between the image and the name */
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.team .team-member-info .position {
+    font-size: 14px;
+    color: #888;
+}
+
+/* Media Query for Small Devices */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .content-wrapper img {
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 20px;
+    }
+
+    .team .team-member {
+        margin-bottom: 20px;
+    }
+}
+

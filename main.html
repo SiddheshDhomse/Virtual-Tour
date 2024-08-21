@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Tour</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <style>
+        body {
+            margin: 0;
+        }
+        #panorama {
+            width: calc(100vw - 40px);
+            height: calc(100vh - 40px);
+            margin: 20px;
+            border: 2px solid #000;
+        }
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            z-index: 1000;
+        }
+        .header {
+            background-color: #f8f9fa;
+            padding: 10px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .nav-buttons {
+            position: fixed;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 1001;
+        }
+        .nav-buttons button {
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 24px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+        .nav-buttons .prev {
+            position: absolute;
+            left: 10px;
+        }
+        .nav-buttons .next {
+            position: absolute;
+            right: 10px;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            padding: 10px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body class="bg-light text-dark">
+    <div id="header"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+    </script>
+
+    <div id="panorama"></div>
+    
+    <div class="nav-buttons">
+        <button class="prev" onclick="prevScene()">&#9664;</button>
+        <button class="next" onclick="nextScene()">&#9654;</button>
+    </div>
+
+    <div id="overlay">
+        <h1>The tour is over!</h1>
+        <button class="btn btn-primary" onclick="window.location.href='index.html'">Go to Home Page</button>
+    </div>
+
+    <!-- Audio element for scene descriptions -->
+    <audio id="audio-description" controls style="display: none;"></audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <script>
+        let currentSceneIndex = 0;
+        const scenes = [
+            "scene1", "scene2", "scene3", "scene4", "scene5", 
+            "scene6", "scene7", "scene8", "scene9", "scene10",
+            "scene11", "scene12"
+        ];
+        const imageUrls = [
+            "https://siddheshdhomse.github.io/Images-for-VT/Lawn.jpg",
+            "https://siddheshdhomse.github.io/Images-for-VT/Coridor.jpg",
+            "https://siddheshdhomse.github.io/Images-for-VT/Entrance%20Mac%20lab.jpg",
+            "https://siddheshdhomse.github.io/Images-for-VT/Mac%20Lab.jpg",
+            "https://siddheshdhomse.github.io/Images-for-VT/Mac%20lab%20side.jpg",
+            "https://siddheshdhomse.github.io/Images-for-VT/Coridor%20hod%20cabin.jpg",
+            "https://siddheshdhomse.github.io/Images-for-VT/HOD%20wating%20room.jpg",
+            "https://siddheshdhomse.github.io/Images-for-VT/CS-HOD%20cabin.jpg",
+            "https://siddheshdhomse.github.io/Images-for-VT/Coridor%20Nvidia%20lab.jpg",
+            "https://siddheshdhomse.github.io/Images-for-VT/Entrance%20Nvidia%20Lab.jpg",
+            "https://siddheshdhomse.github.io/Images-for-VT/Nvidia%20Lab.jpg",
+            "https://siddheshdhomse.github.io/Images-for-VT/DAA%20lab.jpg",
+        ];
+
+        // Map of scene names to audio file URLs
+        const audioFiles = {
+            "scene1": "Audio/Lawn.mp3",
+            "scene2": "Audio/CS-corridor.mp3",
+            "scene3": "audio/scene3.mp3",
+            "scene4": "audio/scene4.mp3",
+            "scene5": "audio/scene5.mp3",
+            "scene6": "audio/scene6.mp3",
+            "scene7": "audio/scene7.mp3",
+            "scene8": "audio/scene8.mp3",
+            "scene9": "audio/scene9.mp3",
+            "scene10": "audio/scene10.mp3",
+            "scene11": "audio/scene11.mp3",
+            "scene12": "audio/scene12.mp3",
+
+        };
+
+        const sceneDurations = [
+            36000, 36000, 36000, 36000, 36000, 
+            36000, 36000, 36000, 36000, 36000,
+            36000, 36000, 36000, 36000, 36000
+        ]; // Duration for each scene in milliseconds
+
+        const viewer = pannellum.viewer('panorama', {
+            "default": {
+                "firstScene": scenes[0],
+                "sceneFadeDuration": 500,
+                "autoLoad": true,
+                "autoRotate": 10 // Adjust speed here
+            },
+            "scenes": scenes.reduce((acc, scene, index) => {
+                acc[scene] = {
+                    "type": "equirectangular",
+                    "panorama": imageUrls[index],
+                    "hotSpots": [
+                        {
+                            "pitch": 10,
+                            "yaw": 180,
+                            "type": "scene",
+                            "text": `Go to ${scenes[(index + 1) % scenes.length]}`,
+                            "sceneId": scenes[(index + 1) % scenes.length]
+                        },
+                        {
+                            "pitch": -10,
+                            "yaw": 0,
+                            "type": "info",
+                            "text": `Information about ${scene}`,
+                            "URL": `https://example.com/info${index + 1}`
+                        }
+                    ]
+                };
+                return acc;
+            }, {})
+        });
+
+        const audioElement = document.getElementById('audio-description');
+
+        function loadScene(index) {
+            if (index >= scenes.length) {
+                // All scenes have been shown
+                document.getElementById('overlay').style.display = 'flex';
+                document.getElementById('panorama').style.display = 'none';
+                document.querySelector('.nav-buttons').style.display = 'none';
+                audioElement.pause(); // Stop audio playback
+                return;
+            }
+            currentSceneIndex = index;
+            const scene = scenes[currentSceneIndex];
+            viewer.loadScene(scene);
+
+            // Play audio description
+            audioElement.src = audioFiles[scene];
+            audioElement.play();
+        }
+
+        function nextScene() {
+            if (currentSceneIndex < scenes.length - 1) {
+                loadScene(currentSceneIndex + 1);
+            }
+        }
+
+        function prevScene() {
+            if (currentSceneIndex > 0) {
+                loadScene(currentSceneIndex - 1);
+            }
+        }
+
+        viewer.on('scenechange', () => {
+            // Set a timeout for the next scene based on the duration of the current scene
+            setTimeout(() => {
+                if (currentSceneIndex < scenes.length - 1) {
+                    loadScene(currentSceneIndex + 1);
+                }
+            }, sceneDurations[currentSceneIndex]);
+        });
+
+        loadScene(0); // Start the tour
+    </script>
+</body>
+</html>

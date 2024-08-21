@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Tour - User Interests</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="user_interests.css">
+    <style>
+        .question {
+            margin-bottom: 40px; /* Space between questions */
+        }
+        .question button {
+            margin: 20px; /* Space between buttons */
+        }
+        #skip-btn {
+            background-color: #dc3545; 
+            color: white; 
+            border: none;
+            padding: 10px 20px; 
+            border-radius: 5px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+        #skip-btn:hover {
+            background-color: #c82333; 
+        }
+    </style>
+</head>
+<body class="light-theme">
+    <div id="particles-js"></div> <!-- Particles.js background -->
+    <div id="header"></div>
+     <script>
+         fetch('header.html')
+             .then(response => response.text())
+             .then(data => document.getElementById('header').innerHTML = data);
+     </script>
+    <header class="p-4 flex justify-between items-center">
+        <div class="flex-grow flex justify-center">
+        </div>
+        <button id="theme-toggle" class="btn btn-secondary"><i class="fas fa-moon"></i></button>
+    </header>
+    
+    <main class="content">
+        <div id="question-container" class="text-center">
+            <div class="question" id="question1">
+                <h2 class="text-3xl mb-4 animate__animated animate__fadeIn">How are you related?</h2>
+                <button class="btn btn-outline-primary" onclick="answerQuestion(1, 'Red')">Parent</button>
+                <button class="btn btn-outline-primary" onclick="answerQuestion(1, 'Blue')">Student</button>
+                <button class="btn btn-outline-primary" onclick="answerQuestion(1, 'Green')">Alumini</button>
+                <button class="btn btn-outline-primary" id="skip-btn" onclick="skipQuestion()">Skip</button>
+
+                </div>
+            <div class="question" id="question2" style="display: none;">
+                <h2 class="text-3xl mb-4 animate__animated animate__fadeIn">What is your favorite branch?</h2>
+                <button class="btn btn-outline-primary" onclick="answerQuestion(2, 'Reading')">Computer Science</button>
+                <button class="btn btn-outline-primary" onclick="answerQuestion(2, 'Traveling')">ENTC</button>
+                <button class="btn btn-outline-primary" onclick="answerQuestion(2, 'Gaming')">Chemical</button>
+                <button class="btn btn-outline-primary" onclick="answerQuestion(2, 'Cooking')">Mechanical</button>
+                <button class="btn btn-outline-primary" id="skip-btn" onclick="skipQuestion()">Skip</button>
+            </div>
+            <div class="question" id="question3" style="display: none;">
+                <h2 class="text-3xl mb-4 animate__animated animate__fadeIn">What is your preferred clubs?</h2>
+                <button class="btn btn-outline-primary" onclick="answerQuestion(3, 'Visual')">Robotics</button>
+                <button class="btn btn-outline-primary" onclick="answerQuestion(3, 'Auditory')">Racing</button>
+                <button class="btn btn-outline-primary" onclick="answerQuestion(3, 'Kinesthetic')">Photography</button>
+                <button class="btn btn-outline-primary" id="skip-btn" onclick="skipQuestion()">Skip</button>
+            </div>
+            <div class="question" id="question4" style="display: none;">
+                <h2 class="text-3xl mb-4 animate__animated animate__fadeIn">Which hobbies interests you the most?</h2>
+                <button class="btn btn-outline-primary" onclick="answerQuestion(4, 'AI')">Sports</button>
+                <button class="btn btn-outline-primary" onclick="answerQuestion(4, 'Blockchain')">Reading</button>
+                <button class="btn btn-outline-primary" onclick="answerQuestion(4, 'Web Development')">Gaming</button>
+                <button class="btn btn-outline-primary" onclick="answerQuestion(4, 'Data Science')">Dancing</button>
+                <button class="btn btn-outline-primary" id="skip-btn" onclick="skipQuestion()">Skip</button>
+            </div>
+        </div>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="user_interests.js"></script>
+</body>
+</html>

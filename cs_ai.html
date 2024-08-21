@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS</title>
+    <link href="departments.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+</head>
+<body>
+     <div id="header"></div>
+     <script>
+         fetch('header.html')
+             .then(response => response.text())
+             .then(data => document.getElementById('header').innerHTML = data);
+     </script>
+
+     <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+
+        <img src="Images/VitHero.jpg" alt="" data-aos="fade-in">
+  
+        <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <h2>Department of Computer Engineering</h2>
+              <a href="tour.html" class="btn-get-started">Take Virtual Tour</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /Hero Section -->
+
+      <div class="content-wrapper">
+        <p class="text-muted">
+            The Computer Science and Artificial Intelligence Department at Vishwakarma Institute of Technology is at the forefront of computer science and artificial intelligence research and education. The department offers a diverse range of programs that explore the theoretical foundations and practical applications of computing and AI. With state-of-the-art facilities and a strong emphasis on research, students are well-prepared to contribute to the rapidly evolving field of computer science and AI.        </p>
+        <img src="https://www.vit.edu/Computer/images/System_Lab_Comp.jpg" alt="Computer Engineering Department">
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
+</html>
